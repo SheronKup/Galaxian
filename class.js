@@ -56,13 +56,69 @@ class Nave extends Obj{
     
 }
 
-class Disco extends Obj{
-    vel = Math.random() * (6 - 3) + 3
-
-    mov(){
-        this.y += this.vel
+class Disco1 extends Obj{
+    des_obj(){
+        let img = new Image()
+        img.src = this.at
+        des.drawImage(img,this.x,this.y,this.w,this.h)
     }
+    // vel = Math.random() * (6 - 3) + 3
+
+    // mov(){
+    //     this.y += this.vel
+    // }
     
+}
+class Disco2 extends Obj{
+    des_obj(){
+        let img = new Image()
+        img.src = this.at
+        des.drawImage(img,this.x,this.y,this.w,this.h)
+    }
+    // vel = Math.random() * (6 - 3) + 3
+
+    // mov(){
+    //     this.y += this.vel
+    // }
+    
+}
+class Disco3 extends Obj{
+    des_obj(){
+        let img = new Image()
+        img.src = this.at
+        des.drawImage(img,this.x,this.y,this.w,this.h)
+    }
+    // vel = Math.random() * (6 - 3) + 3
+
+    // mov(){
+    //     this.y += this.vel
+    // }
+    
+}
+class Disco4 extends Obj{
+    des_obj(){
+        let img = new Image()
+        img.src = this.at
+        des.drawImage(img,this.x,this.y,this.w,this.h)
+    }
+    // vel = Math.random() * (6 - 3) + 3
+
+    // mov(){
+    //     this.y += this.vel
+    // }
+    
+}
+class Disco5 extends Obj{
+    des_obj(){
+        let img = new Image()
+        img.src = this.at
+        des.drawImage(img,this.x,this.y,this.w,this.h)
+    }
+    // vel = Math.random() * (6 - 3) + 3
+
+    // mov(){
+    //     this.y += this.vel
+    // }
 }
 
 class Tiro extends Obj{

@@ -1,11 +1,52 @@
 let des = document.getElementById('des').getContext('2d')
 
-let bg1 = new BG(0,0,500,700,'./assets/background.jpg')
-let bg2 = new BG(0,-700,500,700,'./assets/background2.jpg')
-let bg3 = new BG(0,-1400,500,700,'./assets/background.jpg')
-let bg4 = new BG(0,-2100,500,700,'./assets/background2.jpg')
 let nav1 = new Nave(400,500,50,70,'./assets/nave.png')
-let enemy1 = new Disco(10, 10, 50, 50)
+
+let enemy1 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy2 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy3 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy4 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy5 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy6 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy7 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy8 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy9 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy10 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy11 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy12 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy13 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy14 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy15 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy16 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy17 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy18 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy19 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let enemy20 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+
+let alien1 = new Disco2(110, 10, 50, 50,'./assers/bixo.png')
+let alien2 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien3 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien4 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien5 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien6 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien7 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien8 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+
+let hex1 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex2 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex3 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex4 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex5 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex6 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+
+let quadra1 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+let quadra2 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+let quadra3 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+let quadra4 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+
+let duo1 = new Disco5(10, 10, 50, 50,'./assers/bixo.png')
+let duo2 = new Disco5(10, 10, 50, 50,'./assers/bixo.png')
+
 let txt_pts = new Texto()
 let pts = new Texto()
 let txt_vidas = new Texto()
@@ -15,6 +56,19 @@ const som2 = new Audio('assets/batida.mp3')
 som1.volume = 1.0
 som1.loop = true
 som2.volume = 0.7
+
+let enemyLines = [
+    // Line 1 (adjust x and y as needed)
+    [{ x: 100, y: 100 }, { x: 200, y: 100 }, { x: 300, y: 100 }],
+    // Line 2 (adjust x and y as needed)
+    [{ x: 50, y: 200 }, { x: 150, y: 200 }, { x: 250, y: 200 }],
+    // Line 3 (adjust x and y as needed)
+    [{ x: 50, y: 200 }, { x: 150, y: 200 }, { x: 250, y: 200 }],
+    // Line 4 (adjust x and y as needed)
+    [{ x: 50, y: 200 }, { x: 150, y: 200 }, { x: 250, y: 200 }],
+    // Line 5 (adjust x and y as needed)
+    [{ x: 50, y: 200 }, { x: 150, y: 200 }, { x: 250, y: 200 }],
+  ];
 
 let grupoTiros = [] 
 let tiros = {
@@ -72,14 +126,17 @@ let discos = {
     time1: 0, 
     time2: 0,
     time3: 0,
+    time4: 0,
 
     criaDisco(){
         this.time1 += 1
         this.time2 += 1
         this.time3 += 1
+        this.time4 += 1
         let pos_x = (Math.random() * (438 - 2 +1)+2)
         let pos_x2 = (Math.random() * (438 - 2 +1)+2)
         let pos_x3 = (Math.random() * (438 - 2 +1)+2)
+        let pos_x4 = (Math.random() * (438 - 2 +1)+2)
         if(this.time1 >=60){
             this.time1 = 0
             grupoDiscos.push(new Disco(pos_x,-200,50,50,'assets/disco.png'))
@@ -93,6 +150,11 @@ let discos = {
 
         if(this.time3 >=135){
             this.time3 = 0
+            grupoDiscos.push(new Disco(pos_x3,-400,50,50,'assets/disco3.png'))
+            console.log(grupoDiscos)
+        }
+        if(this.time4 >=135){
+            this.time = 0
             grupoDiscos.push(new Disco(pos_x3,-400,50,50,'assets/disco3.png'))
             console.log(grupoDiscos)
         }
@@ -136,19 +198,14 @@ function colisao(){
 }
 
 function desenha(){    
-//   bg1.des_obj();
-//   bg2.des_obj();
-//   bg3.des_obj();
-//   bg4.des_obj(); 
   tiros.des();
   discos.des();
-
   nav1.des_obj();  
 
-  txt_pts.des_text('Pontos:',20,40,'white','30px Times');
-  pts.des_text(nav1.pts,120,40,'white','30px Times');
-  txt_vidas.des_text('Vidas:',380,40,'white','30px Times');
-  n_vidas.des_text(nav1.vida,460,40,'white','30px Times');
+  txt_pts.des_text('Pontos:',245,40,'white','26px Times');
+  pts.des_text(nav1.pts,277,70,'white','26px Times');
+  txt_vidas.des_text('Vidas:',10,600,'white','26px Times');
+  n_vidas.des_text(nav1.vida,85,600,'white','26px Times');
 }
 
 function atualiza(){
