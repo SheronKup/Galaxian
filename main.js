@@ -24,6 +24,7 @@ let enemy1 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 // let enemy18 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 // let enemy19 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 // let enemy20 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
+let alien = new Disco2(125,156,22,22,'sdffda')
 
 let alien1 = new Disco2(110, 10, 50, 50,'./assers/bixo.png')
 let alien2 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
