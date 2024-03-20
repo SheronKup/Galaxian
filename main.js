@@ -3,7 +3,8 @@ let des = document.getElementById('des').getContext('2d')
 let nav1 = new Nave(400,500,28,29,'./assets/nave-1.png')
 
 let enemy1 = new Disco1(300, 100, 30, 30,'./assets/0.png')
-// let enemy2 = new Disco1(20, 10, 30, 30,'./assets/bixo.png')
+let enemy2 = new Disco1(200, 100, 30, 30,'./assets/0.png')
+
 // let enemy3 = new Disco1(60, 10, 30, 30,'./assets/bixo.png')
 // let enemy4 = new Disco1(100, 10, 30, 30,'./assets/bixo.png')
 // let enemy5 = new Disco1(140, 10, 30, 30,'./assets/bixo.png')
@@ -76,21 +77,6 @@ let tiros = {
     }
 }
 
-const tiro = document.getElementById('tiros');
-const inimigo = document.getElementById('enemy1');
-
-function detectarColisao() {
-  const posicaoTiro = tiro.getBoundingClientRect();
-  const posicaoInimigo = inimigo.getBoundingClientRect();
-
-  if (posicaoTiro.left < posicaoInimigo.right &&
-    posicaoTiro.right > posicaoInimigo.left &&
-    posicaoTiro.top < posicaoInimigo.bottom &&
-    posicaoTiro.bottom > posicaoInimigo.top) {
-    inimigo.parentNode.removeChild(inimigo);
-  }
-}
-
 document.addEventListener('keydown', (ev)=>{
     if(ev.key === 'a'){
         nav1.isLeftPressed = true
@@ -125,61 +111,32 @@ document.addEventListener('keypress', (ev) => {
 });
 
 let grupoDiscos = []
+
 grupoDiscos.push(enemy1)
+console.log(grupoDiscos)
+
 let discos = {
-    time1: 0, 
-    time2: 0,
-    time3: 0,
-    time4: 0,
 
-    
-
-    // criaDisco(){
-    //     this.time1 += 1
-    //     this.time2 += 1
-    //     this.time3 += 1
-    //     this.time4 += 1
-    //     let pos_x = (Math.random() * (438 - 2 +1)+2)
-    //     let pos_x2 = (Math.random() * (438 - 2 +1)+2)
-    //     let pos_x3 = (Math.random() * (438 - 2 +1)+2)
-    //     let pos_x4 = (Math.random() * (438 - 2 +1)+2)
-    //     if(this.time1 >=60){
-    //         this.time1 = 0
-    //         grupoDiscos.push(new Disco(pos_x,-200,50,50,'assets/disco.png'))
-    //         console.log(grupoDiscos)
-    //     }
-    //     if(this.time2 >=85){
-    //         this.time2 = 0
-    //         grupoDiscos.push(new Disco(pos_x2,-300,50,50,'assets/disco2.png'))
-    //         console.log(grupoDiscos)
-    //     }
-
-    //     if(this.time3 >=135){
-    //         this.time3 = 0
-    //         grupoDiscos.push(new Disco(pos_x3,-400,50,50,'assets/disco3.png'))
-    //         console.log(grupoDiscos)
-    //     }
-    //     if(this.time4 >=135){
-    //         this.time = 0
-    //         grupoDiscos.push(new Disco(pos_x3,-400,50,50,'assets/disco3.png'))
-    //         console.log(grupoDiscos)
-    //     }
-    // },
-    des(){
-        grupoDiscos.forEach((disc)=>{
-            disc.des_obj()
-        })
+    des() {
+        grupoDiscos.forEach((disc) => {
+            if (typeof disc.des_obj === 'function') {
+                disc.des_obj();
+            }
+        });
     },
-    destroiDisco(){
-        grupoTiros.forEach((tiro)=>{
-            grupoDiscos.forEach((disc)=>{
-                if(tiro.colid(disc)){
-                    grupoTiros.splice(grupoTiros.indexOf(tiro), 1)
-                    grupoDiscos.splice(grupoDiscos.indexOf(disc), 1)
-                    nav1.pts +=1
+    destroiDisco() {
+        for (let i = grupoDiscos.length - 1; i >= 0; i--) {
+            const disc = grupoDiscos[i];
+            for (let j = grupoTiros.length - 1; j >= 0; j--) {
+                const tiro = grupoTiros[j];
+                if (tiro.colid(disc)) {
+                    grupoTiros.splice(j, 1);
+                    grupoDiscos.splice(i, 1); // Modify this line
+                    nav1.pts += 1;
+                    console.log(grupoDiscos)
                 }
-            })
-        })
+            }
+        }
     },
     atual(){
         this.criaDisco()
@@ -191,7 +148,7 @@ let discos = {
             }
         })
     }
-}
+}   
 
 function colisao(){
     grupoDiscos.forEach((disc)=>{
@@ -225,7 +182,6 @@ function atualiza(){
     nav1.mov();
     nav1.anim('nave-');
     colisao();
-    // detectarColisao();
 }
 
 function main(){
