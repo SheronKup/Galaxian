@@ -58,11 +58,6 @@ class Disco1 extends Obj{
         img.src = this.at
         des.drawImage(img,this.x,this.y,this.w,this.h)
     }
-    // vel = Math.random() * (6 - 3) + 3
-
-    // mov(){
-    //     this.y += this.vel
-    // }
     
 }
 class Disco2 extends Obj{
