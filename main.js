@@ -26,13 +26,6 @@ let enemy1 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 // let enemy20 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 let alien = new Disco2(125,156,22,22,'sdffda')
 let lien1 = new Disco2(125,156,22,22,'sdffda')
-
-
-
-let alien7 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
-let alien8 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
-
-let hex1 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
 let lien2= new Disco2(125,156,22,22,'sdffda')
 let lien3 = new Disco2(125,156,22,22,'sdffda')
 let lien4 = new Disco2(125,156,22,22,'sdffda')
@@ -42,6 +35,21 @@ let lien7 = new Disco2(125,156,22,22,'sdffda')
 let lien8 = new Disco2(125,156,22,22,'sdffda')
 let lien9 = new Disco2(125,156,22,22,'sdffda')
 let lien10 = new Disco2(125,156,22,22,'sdffda')
+
+
+let alien7 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+let alien8 = new Disco2(10, 10, 50, 50,'./assers/bixo.png')
+
+let hex1 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex2 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex3 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex4 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex5 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+let hex6 = new Disco3(10, 10, 50, 50,'./assers/bixo.png')
+
+let quadra1 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+let quadra2 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
+let quadra3 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
 let quadra4 = new Disco4(10, 10, 50, 50,'./assers/bixo.png')
 
 let duo1 = new Disco5(10, 10, 50, 50,'./assers/bixo.png')

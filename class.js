@@ -16,16 +16,12 @@ class Obj {
         des.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
 
-    colid(objeto) {
-        if((this.x < objeto.x + objeto.w)&&
-            (this.x + this.w > objeto.x)&&
-            (this.y < objeto.y + objeto.h)&&
-            (this.y + this.h > objeto.y)){
-            return true       
-        }else{
-            return false
-        }
-    }
+   teste(){
+
+   }
+   teste2(){
+    
+   }
 }
 
 class Nave extends Obj{
