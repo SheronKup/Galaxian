@@ -16,12 +16,16 @@ class Obj {
         des.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
 
-   teste(){
-
-   }
-   teste2(){
-    
-   }
+    colid(objeto) {
+        if((this.x < objeto.x + objeto.w)&&
+            (this.x + this.w > objeto.x)&&
+            (this.y < objeto.y + objeto.h)&&
+            (this.y + this.h > objeto.y)){
+            return true       
+        }else{
+            return false
+        }
+    }
 }
 
 class Nave extends Obj{
@@ -37,6 +41,18 @@ class Nave extends Obj{
         let img = new Image()
         img.src = this.at
         des.drawImage(img,this.x,this.y,this.w,this.h)
+    }
+
+    anim(nome){
+        this.time += 1
+        if(this.time > 12){
+            this.time = 0
+            this.frame += 1
+        }
+        if(this.frame > 4){
+            this.frame = 1
+        }
+        this.a = "assets/" + nome + '-' + this.frame + ".png"
     }
 
     mov(){
@@ -58,6 +74,18 @@ class Disco1 extends Obj{
         img.src = this.at
         des.drawImage(img,this.x,this.y,this.w,this.h)
     }
+
+    vel = Math.random() * (6 - 3) + 3
+
+    mov(){
+        
+        this.x += this.vel
+        
+        if(this.x >= 530){
+            this.x = 530
+        }
+    }
+
     
 }
 class Disco2 extends Obj{
