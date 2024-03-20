@@ -1,6 +1,6 @@
 let des = document.getElementById('des').getContext('2d')
 
-let nav1 = new Nave(400,500,50,70,'./assets/nave.png')
+let nav1 = new Nave(400,500,28,29,'./assets/nave-1.png')
 
 let enemy1 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
 let enemy2 = new Disco1(10, 10, 50, 50,'./assers/bixo.png')
