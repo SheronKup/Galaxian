@@ -3,7 +3,7 @@ let des = document.getElementById('des').getContext('2d')
 let nav1 = new Nave(400,500,28,29,'./assets/nave-1.png')
 
 let enemy1 = new Disco1(300, 100, 30, 30,'./assets/0.png')
-let enemy2 = new Disco1(200, 100, 30, 30,'./assets/0.png')
+let enemy2 = new Disco1(200, 200, 30, 30,'./assets/0.png')
 
 // let enemy3 = new Disco1(60, 10, 30, 30,'./assets/bixo.png')
 // let enemy4 = new Disco1(100, 10, 30, 30,'./assets/bixo.png')
@@ -66,6 +66,8 @@ let tiros = {
         grupoTiros.forEach((tiro)=>{
             tiro.des_tiro()
         })
+
+        
     },
     atual(){
         grupoTiros.forEach((tiro)=>{
@@ -73,6 +75,21 @@ let tiros = {
             if(tiro.y <= -10){
                 grupoTiros.splice(tiro[0],1)
             }
+            grupoDiscos.forEach((disc) => {
+            if(tiro.colid(disc)){
+                // Check if bullet's right side is greater than or equal to enemy's left side
+                // AND bullet's left side is less than or equal to enemy's right side
+                const isCollidingX = tiro.x + tiro.w >= 
+                                     disc.x && tiro.x <= 
+                                     disc.x + disc.w;
+                // Check if bullet's bottom side is greater than or equal to enemy's top side
+                // AND bullet's top side is less than or equal to enemy's bottom side
+                const isCollidingY = tiro.y + tiro.h >= 
+                                     disc.y && tiro.y <= 
+                                     disc.y + disc.h;
+                // Return true if both X and Y conditions are met (collision)
+                return isCollidingX && isCollidingY;
+                }})
         })
     }
 }
@@ -106,12 +123,11 @@ document.addEventListener('keypress', (ev) => {
   if (ev.key === ' ' && podeAtirar) {
     podeAtirar = false; // Desabilita o disparo
     grupoTiros.push(new Tiro(nav1.x - 4 + nav1.w / 2, nav1.y, 8, 16, 'red'));
-    setTimeout(() => { podeAtirar = true; }, 1000); // Habilita o disparo após 500ms
+    setTimeout(() => { podeAtirar = true; }, 1000);
   }
 });
 
 let grupoDiscos = []
-
 grupoDiscos.push(enemy1)
 console.log(grupoDiscos)
 
@@ -131,15 +147,14 @@ let discos = {
                 const tiro = grupoTiros[j];
                 if (tiro.colid(disc)) {
                     grupoTiros.splice(j, 1);
-                    grupoDiscos.splice(i, 1); // Modify this line
+                    grupoDiscos.splice(i, 1);
                     nav1.pts += 1;
-                    console.log(grupoDiscos)
                 }
             }
         }
     },
+
     atual(){
-        this.criaDisco()
         this.destroiDisco()
         grupoDiscos.forEach((disc)=>{
             disc.mov()
@@ -163,7 +178,7 @@ function desenha(){
     tiros.des();
     discos.des();
     enemy1.des_obj();
-//  enemy2.des_obj();
+    enemy2.des_obj();
 //  enemy3.des_obj();
 //  enemy4.des_obj();
 //  enemy5.des_obj();
@@ -178,10 +193,11 @@ function desenha(){
 
 function atualiza(){
     tiros.atual()
+    colisao();
     enemy1.mov();
+    enemy2.mov();
     nav1.mov();
     nav1.anim('nave-');
-    colisao();
 }
 
 function main(){
